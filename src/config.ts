@@ -3,7 +3,7 @@ import type { ThemeConfig } from './types'
 export const themeConfig: ThemeConfig = {
     // SITE INFO ///////////////////////////////////////////////////////////////////////////////////////////
     site: {
-        website: 'https://jasonkyuyim.com', // Site domain
+        website: 'https://jasonkyuyim.github.io', // Site domain
         title: 'Jason Yim', // Site title
         author: 'Jason Yim', // Author name
         description: 'Personal website of Jason Yim', // Site description
