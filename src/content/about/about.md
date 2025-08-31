@@ -2,15 +2,14 @@
 title: 'About'
 ---
 
-<!--
-This content will be displayed at the top of the index page.
-You can leave this empty if you don’t want to show any content.
--->
+**Contact:** jasonkyuyim [at] alum.mit.edu
 
-A static blog theme based on [Astro](https://astro.build), designed for clarity and focus.
+I graduated from MIT with a PhD in EECS advised by Tommi Jaakkola and Regina Barzilay.
+My research spans machine learning methods and applications with an emphasis on generative models.
+During my PhD, I developed diffusion models for Riemannian manifolds and discrete data.
+These were then applied to protein design in collaboration with Nobel laureate David Baker.
 
-With a deliberately minimal design, this layout ensures your content takes center stage. It's built for flexibility, offering customization options that honor its clean and elegant aesthetic.
+In the past, I was a research engineer at DeepMind working on computer vision and protein structure prediction (AlphaFold-multimer).
+I am currently an AI scientist at Xaira Therapeutics.
 
-Effortlessly share your thoughts in _a calm & dustless space._
-
-Check posts for details and view source on [GitHub](https://github.com/the3ash/astro-chiri).
+This is my blog where I document my musings.
