@@ -16,38 +16,36 @@ import { imageConfig } from './src/utils/image-config'
 import path from 'path'
 import netlify from '@astrojs/netlify'
 
+import icon from 'astro-icon';
+
 export default defineConfig({
-  adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
-  site: themeConfig.site.website,
-  image: {
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: imageConfig
-    }
-  },
-  markdown: {
-    shikiConfig: {
-      theme: 'css-variables',
-      wrap: false
+    adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
+    site: themeConfig.site.website,
+    image: {
+        service: {
+            entrypoint: 'astro/assets/services/sharp',
+            config: imageConfig
+        }
     },
-    remarkPlugins: [remarkMath, remarkDirective, remarkEmbeddedMedia, remarkReadingTime, remarkTOC],
-    rehypePlugins: [rehypeKatex, rehypeCleanup, rehypeImageProcessor, rehypeCopyCode]
-  },
-  integrations: [
-    playformInline({
-      Exclude: [(file) => file.toLowerCase().includes('katex')]
-    }),
-    mdx(),
-    sitemap()
-  ],
-  vite: {
-    resolve: {
-      alias: {
-        '@': path.resolve('./src')
-      }
+    markdown: {
+        shikiConfig: {
+            theme: 'css-variables',
+            wrap: false
+        },
+        remarkPlugins: [remarkMath, remarkDirective, remarkEmbeddedMedia, remarkReadingTime, remarkTOC],
+        rehypePlugins: [rehypeKatex, rehypeCleanup, rehypeImageProcessor, rehypeCopyCode]
+    },
+    integrations: [playformInline({
+        Exclude: [(file) => file.toLowerCase().includes('katex')]
+    }), mdx(), sitemap(), icon()],
+    vite: {
+        resolve: {
+            alias: {
+                '@': path.resolve('./src')
+            }
+        }
+    },
+    devToolbar: {
+        enabled: false
     }
-  },
-  devToolbar: {
-    enabled: false
-  }
 })
