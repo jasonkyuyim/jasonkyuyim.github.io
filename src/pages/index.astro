@@ -4,7 +4,6 @@ import About from "@/components/widgets/About.astro";
 import PostList from "@/components/widgets/PostList.astro";
 import { themeConfig } from "@/config";
 import { getSortedFilteredPosts } from "@/utils/draft";
-import SocialIcons from '@/components/ui/SocialIcons.astro'
 
 const posts = await getSortedFilteredPosts();
 ---
@@ -13,9 +12,16 @@ const posts = await getSortedFilteredPosts();
     title={themeConfig.site.title}
     description={themeConfig.site.description}
 >
-    <About />
-    <SocialIcons twitter="json_yim" linkedin="jason-yim-92173b97" github="jasonkyuyim" scholar="8wDe9NAAAAAJ" />
+    <div class="home-about">
+        <About />
+    </div>
     <main>
         <PostList posts={posts} />
     </main>
 </IndexLayout>
+
+<style>
+    .home-about .prose > *:first-child {
+        margin-top: 0;
+    }
+</style>

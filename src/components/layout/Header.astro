@@ -1,12 +1,33 @@
 ---
 import { themeConfig } from "@/config";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
+import SocialIcons from "@/components/ui/SocialIcons.astro";
+import profilePicture from "@/media/profile_picture.jpg";
 ---
 
 <header>
     <nav>
-        <a href="/">{themeConfig.site.title}</a>
-        <ThemeToggle />
+        <div class="site-info">
+            <a class="site-title" href="/">{themeConfig.site.title}</a>
+            <SocialIcons
+                class="header-social-icons"
+                twitter="json_yim"
+                linkedin="jason-yim-92173b97"
+                github="jasonkyuyim"
+                scholar="8wDe9NAAAAAJ"
+            />
+        </div>
+        <div class="header-actions">
+            <ThemeToggle />
+            <img
+                class="profile-image"
+                src={profilePicture.src}
+                width={profilePicture.width}
+                height={profilePicture.height}
+                alt="Profile picture of Jason Yim"
+                loading="eager"
+            />
+        </div>
     </nav>
 </header>
 <style>
@@ -16,14 +37,33 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
     nav {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        gap: 1.5rem;
     }
-    header a {
+    .site-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+    .site-title {
         font-weight: 700;
         font-size: 1.5rem;
         color: var(--text-primary);
         text-decoration: none;
-        min-width: 3rem;
         display: inline-block;
+    }
+    .header-social-icons {
+        margin-top: 0.25rem;
+    }
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .profile-image {
+        width: 13rem;
+        height: 17rem;
+        border-radius: 0.35rem;
+        object-fit: cover;
     }
 </style>
