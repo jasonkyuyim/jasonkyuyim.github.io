@@ -16,15 +16,6 @@ const posts = await getSortedFilteredPosts();
 >
     <a class="site-title">{themeConfig.site.title}</a>
     <div class="home-intro">
-        <div class="home-icons">
-            <SocialIcons
-                class="icons"
-                twitter="json_yim"
-                linkedin="jason-yim-92173b97"
-                github="jasonkyuyim"
-                scholar="8wDe9NAAAAAJ"
-            />
-        </div>
         <div class="home-picture">
             <img
                 class="profile-image"
@@ -33,6 +24,15 @@ const posts = await getSortedFilteredPosts();
                 height={profilePicture.height}
                 alt="Profile picture of Jason Yim"
                 loading="eager"
+            />
+        </div>
+        <div class="home-icons">
+            <SocialIcons
+                class="icons"
+                twitter="json_yim"
+                linkedin="jason-yim-92173b97"
+                github="jasonkyuyim"
+                scholar="8wDe9NAAAAAJ"
             />
         </div>
     </div>
@@ -86,21 +86,36 @@ const posts = await getSortedFilteredPosts();
         flex-direction: column;
         gap: 0.35rem;
     }
+    .home-intro {
+        margin-top: 1rem;
+        position: relative;
+    }
+    .home-intro::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
     .home-picture {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
+        float: right;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        max-width: min(40%, 14rem);
     }
     .profile-image {
-        width: 13rem;
-        height: 17rem;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 13 / 17;
         border-radius: 0.35rem;
         object-fit: cover;
     }
-    .home-intro {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 1.5rem;
+    @media (max-width: 640px) {
+        .home-picture {
+            float: none;
+            margin: 0 auto 1.25rem;
+            max-width: 11rem;
+        }
+        .home-icons {
+            text-align: left;
+        }
     }
 </style>

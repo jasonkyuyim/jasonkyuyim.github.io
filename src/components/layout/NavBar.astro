@@ -64,10 +64,9 @@ const normalizedCurrentPath = normalizePath(currentPath);
     .nav-link {
         text-decoration: none;
         font-weight: 600;
-        color: var(--text-secondary);
+        color: var(--text-primary);
         padding-bottom: 0.2rem;
-        border-bottom: 2px solid transparent;
-        transition: color 0.2s ease, border-color 0.2s ease;
+        transition: color 0.2s ease;
     }
 
     .nav-link:hover,
@@ -77,6 +76,5 @@ const normalizedCurrentPath = normalizePath(currentPath);
 
     .nav-link.active {
         color: var(--text-primary);
-        border-color: var(--text-primary);
     }
 </style>
