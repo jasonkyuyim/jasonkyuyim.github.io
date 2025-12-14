@@ -1,40 +1,17 @@
 ---
-import { themeConfig } from "@/config";
-import ThemeToggle from "@/components/ui/ThemeToggle.astro";
-import SocialIcons from "@/components/ui/SocialIcons.astro";
-import profilePicture from "@/media/profile_picture.jpg";
+import NavBar from "@/components/layout/NavBar.astro";
 ---
 
 <header>
-    <nav>
-        <div class="site-info">
-            <a class="site-title" href="/">{themeConfig.site.title}</a>
-            <SocialIcons
-                class="header-social-icons"
-                twitter="json_yim"
-                linkedin="jason-yim-92173b97"
-                github="jasonkyuyim"
-                scholar="8wDe9NAAAAAJ"
-            />
-        </div>
-        <div class="header-actions">
-            <ThemeToggle />
-            <img
-                class="profile-image"
-                src={profilePicture.src}
-                width={profilePicture.width}
-                height={profilePicture.height}
-                alt="Profile picture of Jason Yim"
-                loading="eager"
-            />
-        </div>
-    </nav>
+    <NavBar />
+    <div class="header-main">
+    </div>
 </header>
 <style>
     header {
         margin: 0;
     }
-    nav {
+    .header-main {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -44,13 +21,6 @@ import profilePicture from "@/media/profile_picture.jpg";
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-    }
-    .site-title {
-        font-weight: 700;
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        text-decoration: none;
-        display: inline-block;
     }
     .header-social-icons {
         margin-top: 0.25rem;

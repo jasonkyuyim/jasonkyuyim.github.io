@@ -1,0 +1,82 @@
+---
+interface NavLink {
+    href: string;
+    label: string;
+}
+
+const navLinks: NavLink[] = [
+    { href: "/", label: "Home" },
+    { href: "/About", label: "Background" },
+    { href: "/Publications", label: "Publications" },
+];
+
+const currentPath = Astro.url?.pathname || "/";
+const normalizePath = (path: string) =>
+    path === "/" ? "/" : path.replace(/\/+$/, "");
+const normalizedCurrentPath = normalizePath(currentPath);
+---
+
+<nav class="top-nav" aria-label="Primary">
+    <ul>
+        {
+            navLinks.map(({ href, label }) => (
+                <li>
+                    <a
+                        href={href}
+                        class={{
+                            "nav-link": true,
+                            active: normalizePath(href) === normalizedCurrentPath,
+                        }}
+                        aria-current={
+                            normalizePath(href) === normalizedCurrentPath
+                                ? "page"
+                                : undefined
+                        }
+                    >
+                        {label}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    .top-nav {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.45rem;
+        margin-bottom: 1.0rem;
+    }
+
+    .top-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .top-nav li {
+        margin: 0;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--text-secondary);
+        padding-bottom: 0.2rem;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+        color: var(--text-primary);
+    }
+
+    .nav-link.active {
+        color: var(--text-primary);
+        border-color: var(--text-primary);
+    }
+</style>
