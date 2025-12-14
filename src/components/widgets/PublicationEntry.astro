@@ -1,0 +1,261 @@
+---
+import { getEntry, render } from "astro:content";
+
+interface PublicationLink {
+    href: string;
+    label: string;
+}
+
+interface Props {
+    media: {
+        src: string;
+        alt: string;
+    };
+    title: string;
+    authors: string;
+    venue: string;
+    description: string;
+    descriptionEntry?: string;
+    links: PublicationLink[];
+}
+
+const {
+    media,
+    title,
+    authors,
+    venue,
+    description,
+    descriptionEntry,
+    links,
+} = Astro.props;
+
+const highlightedAuthors = authors.replace(/Jason Yim\*?/g, (match) => {
+    return `<span class="author-highlight"><strong><u>${match}</u></strong></span>`;
+});
+
+let DescriptionContent: AstroComponentFactory | null = null;
+
+if (descriptionEntry) {
+    const entry = await getEntry("publications", descriptionEntry);
+    if (entry) {
+        const { Content } = await render(entry);
+        DescriptionContent = Content;
+    }
+}
+---
+
+<article class="pub-entry">
+    <div class="pub-media">
+        <img src={media.src} alt={media.alt} loading="lazy" />
+    </div>
+
+    <div class="pub-details">
+        <h3 class="pub-title">{title}</h3>
+        <p class="pub-venue">{venue}</p>
+        <p class="pub-authors" set:html={highlightedAuthors}></p>
+        <details class="pub-description" open>
+            <summary>
+                <span class="description-title">Description</span>
+                <svg
+                    class="chevron"
+                    viewBox="0 0 24 24"
+                    role="presentation"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M18 9l-6 6-6-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </summary>
+            <div class="description-content">
+                {
+                    DescriptionContent ? (
+                        <div class="prose">
+                            <DescriptionContent />
+                        </div>
+                    ) : (
+                        <p>{description}</p>
+                    )
+                }
+            </div>
+        </details>
+        {
+            links?.length > 0 && (
+                <div class="pub-links">
+                    {links.map(({ href, label }) => (
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="pub-link"
+                        >
+                            {label}
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</article>
+
+<div class="pub-divider" aria-hidden="true"></div>
+
+<style>
+    .pub-entry {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .pub-entry {
+        align-items: flex-start;
+    }
+
+    .description-title {
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+
+    .pub-media {
+        flex: 0 0 240px;
+        max-width: 100%;
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+    }
+
+    .pub-media img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.35rem;
+    }
+
+    .pub-details {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .pub-title {
+        margin: 0 0 0.5rem;
+        font-size: 1.15rem;
+        line-height: 1.3;
+    }
+
+    .pub-authors,
+    .pub-venue {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
+
+    .pub-venue {
+        line-height: 1.0;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    .pub-description {
+        margin: 0 0 1rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .pub-description summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .pub-description summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .pub-description .description-content {
+        margin-top: 0.35rem;
+        color: var(--text-secondary);
+    }
+
+    .pub-description .description-content > :first-child {
+        margin-top: 0;
+    }
+
+    .pub-description .description-content > :last-child {
+        margin-bottom: 0;
+    }
+
+    .chevron {
+        width: 0.75rem;
+        height: 0.75rem;
+        color: var(--text-secondary);
+        transition: transform 0.2s ease;
+    }
+
+    .pub-description[open] .chevron {
+        transform: rotate(180deg);
+    }
+
+    .pub-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .pub-link {
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 0.25rem;
+        transition: background-color 0.2s ease, color 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .pub-link:hover,
+    .pub-link:focus-visible {
+        color: var(--bg);
+        background-color: var(--text-primary);
+        border-color: var(--text-primary);
+    }
+
+    .author-highlight {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+        .pub-entry {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .pub-media {
+            width: 100%;
+        }
+    }
+
+    .pub-divider {
+        width: 100%;
+        height: 1px;
+        background: var(--border);
+        margin: 1.5rem 0;
+    }
+</style>

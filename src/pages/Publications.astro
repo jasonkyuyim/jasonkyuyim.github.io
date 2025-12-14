@@ -1,0 +1,108 @@
+---
+import IndexLayout from "@/layouts/IndexLayout.astro";
+import { themeConfig } from "@/config";
+import PublicationEntry from "@/components/widgets/PublicationEntry.astro";
+import codesignGif from "@/media/codesign.gif";
+import framediffGif from "@/media/framediff.gif";
+---
+
+<IndexLayout
+    title={`Publications - ${themeConfig.site.title}`}
+    description={themeConfig.site.description}
+>
+    <p>
+        These are selected publications. For a full list of my publications, see my
+        <a
+            href="https://scholar.google.com/citations?user=8wDe9NAAAAAJ"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Google Scholar profile
+        </a>
+        .
+        <br/>
+        * denotes equal contribution.
+    </p>
+
+    <section class="pub-section">
+        <h1>Machine learning</h1>
+        <PublicationEntry
+            media={{ src: codesignGif.src, alt: "Protein co-design visualization" }}
+            title="Generative Flows on Discrete State-Spaces: Enabling Multimodal Flows with Applications to Protein Co-Design"
+            authors="Andrew Campbell*, Jason Yim*, Regina Barzilay, Tom Rainforth, Tommi Jaakkola"
+            venue="International Conference of Machine Learning 2024"
+            descriptionEntry="codesign"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2402.04997",
+                    label: "Paper",
+                },
+                {
+                    href: "https://www.youtube.com/watch?v=-L9ekyTI21k",
+                    label: "Talk",
+                },
+                {
+                    href: "https://github.com/jasonkyuyim/multiflow",
+                    label: "Multimodal Flow Code",
+                },
+                {
+                    href: "https://github.com/andrew-cr/discrete_flow_models",
+                    label: "Discrete Flow Code",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: framediffGif.src, alt: "Frame-diff visualization" }}
+            title="SE (3) diffusion model with application to protein backbone generation"
+            authors="Jason Yim*, Brian L Trippe*, Valentin De Bortoli*, Emile Mathieu*, Arnaud Doucet, Regina Barzilay, and Tommi Jaakkola"
+            venue="International Conference of Machine Learning 2023"
+            descriptionEntry="framediff"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2302.02277",
+                    label: "Paper",
+                },
+                {
+                    href: "https://news.mit.edu/2023/generative-ai-imagines-new-protein-structures-0712",
+                    label: "MIT News",
+                },
+                {
+                    href: "https://github.com/jasonkyuyim/se3_diffusion",
+                    label: "Code",
+                },
+            ]}
+        />
+    </section>
+
+    <section class="pub-section">
+        <h1>Science</h1>
+        <p class="pub-placeholder">More details coming soon.</p>
+    </section>
+</IndexLayout>
+
+<style>
+    .pubs-title {
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .pub-section + .pub-section {
+        margin-top: 2rem;
+    }
+
+    .pub-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .pub-placeholder {
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    @media (max-width: 640px) {
+        /* layout handled inside PublicationEntry */
+    }
+</style>
