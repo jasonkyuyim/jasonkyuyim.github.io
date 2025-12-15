@@ -6,11 +6,15 @@ interface PublicationLink {
     label: string;
 }
 
+interface MediaProps {
+    src: string;
+    alt: string;
+    type?: "image" | "video";
+    poster?: string;
+}
+
 interface Props {
-    media: {
-        src: string;
-        alt: string;
-    };
+    media: MediaProps;
     title: string;
     authors: string;
     venue: string;
@@ -46,7 +50,20 @@ if (descriptionEntry) {
 
 <article class="pub-entry">
     <div class="pub-media">
-        <img src={media.src} alt={media.alt} loading="lazy" />
+        {
+            media.type === "video" ? (
+                <video
+                    src={media.src}
+                    poster={media.poster}
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                />
+            ) : (
+                <img src={media.src} alt={media.alt} loading="lazy" />
+            )
+        }
     </div>
 
     <div class="pub-details">
@@ -132,10 +149,12 @@ if (descriptionEntry) {
         align-self: flex-start;
     }
 
-    .pub-media img {
+    .pub-media img,
+    .pub-media video {
         width: 100%;
         height: auto;
         border-radius: 0.35rem;
+        display: block;
     }
 
     .pub-details {

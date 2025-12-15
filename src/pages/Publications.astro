@@ -2,16 +2,20 @@
 import IndexLayout from "@/layouts/IndexLayout.astro";
 import { themeConfig } from "@/config";
 import PublicationEntry from "@/components/widgets/PublicationEntry.astro";
-import codesignGif from "@/media/codesign.gif";
-import framediffGif from "@/media/framediff.gif";
-import frameflowGif from "@/media/frameflow.gif";
-import octaneGif from "@/media/octane_s.gif";
+import codesignMp4 from "@/media/codesign.mp4";
+import framediffMp4 from "@/media/framediff.mp4";
+import frameflowMp4 from "@/media/frameflow.mp4";
+import octaneMp4 from "@/media/octane_s.mp4";
 import ggsPng from "@/media/ggs.png";
 import afmPng from "@/media/afm.png";
-import rfdiffusionGif from "@/media/rfdiff.gif";
-import rfdiffusion2Gif from "@/media/rfdiff2.gif";
-import bioemuGif from "@/media/bioemu.gif";
+import rfdiffusionMp4 from "@/media/rfdiff.mp4";
+import rfdiffusion2Mp4 from "@/media/rfdiff2.mp4";
+import smcdiffMp4 from "@/media/smcdiff.mp4";
+import proteinaPng from "@/media/proteina.png";
+import lsdPng from "@/media/lsd.png";
+import bioemuMp4 from "@/media/bioemu.mp4";
 import metalPng from "@/media/metallo.jpg";
+import generatorPng from "@/media/generator.png";
 ---
 
 <IndexLayout
@@ -35,7 +39,7 @@ import metalPng from "@/media/metallo.jpg";
     <section class="pub-section">
         <h1>Machine learning</h1>
         <PublicationEntry
-            media={{ src: codesignGif.src, alt: "Protein co-design visualization" }}
+            media={{ src: codesignMp4, alt: "Protein co-design visualization", type: "video" }}
             title="Generative Flows on Discrete State-Spaces: Enabling Multimodal Flows with Applications to Protein Co-Design"
             authors="Andrew Campbell*, Jason Yim*, Regina Barzilay, Tom Rainforth, Tommi Jaakkola"
             venue="International Conference of Machine Learning 2024"
@@ -61,7 +65,7 @@ import metalPng from "@/media/metallo.jpg";
             ]}
         />
         <PublicationEntry
-            media={{ src: framediffGif.src, alt: "Frame-diff visualization" }}
+            media={{ src: framediffMp4, alt: "Frame-diff visualization", type: "video" }}
             title="SE (3) diffusion model with application to protein backbone generation"
             authors="Jason Yim*, Brian L Trippe*, Valentin De Bortoli*, Emile Mathieu*, Arnaud Doucet, Regina Barzilay, and Tommi Jaakkola"
             venue="International Conference of Machine Learning 2023"
@@ -87,7 +91,21 @@ import metalPng from "@/media/metallo.jpg";
             ]}
         />
         <PublicationEntry
-            media={{ src: frameflowGif.src, alt: "Frame-flow visualization" }}
+            media={{ src: generatorPng.src, alt: "Generator visualization" }}
+            title="Generator Matching: Generative modeling with arbitrary Markov processes"
+            authors="Peter Holderrieth, Marton Havasi, Jason Yim, Neta Shaul, Itai Gat, Tommi Jaakkola, Brian Karrer, Ricky T. Q. Chen, Yaron Lipman"
+            venue="International Conference on Learning Representations 2025 (Oral)"
+            descriptionEntry="generator"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2410.20587",
+                    label: "Paper",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: frameflowMp4, alt: "Frame-flow visualization", type: "video" }}
             title="Improved motif-scaffolding with SE (3) flow matching"
             authors="Jason Yim, Andrew Campbell, Emile Mathieu, Andrew YK Foong, Michael Gastegger, José Jiménez-Luna, Sarah Lewis, Victor Garcia Satorras, Bastiaan S Veeling, Frank Noé, and  others"
             venue="Transactions on Machine Learning Research 2024"
@@ -100,6 +118,45 @@ import metalPng from "@/media/metallo.jpg";
                 },
                 {
                     href: "https://github.com/microsoft/protein-frame-flow",
+                    label: "Code",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: lsdPng.src, alt: "LSD visualization" }}
+            title="Hierarchical protein backbone generation with latent and structure diffusion"
+            authors="Jason Yim, Marouane Jaakik, Ge Liu, Jacob Gershon, Karsten Kreis, David Baker, Regina Barzilay, Tommi Jaakkola"
+            venue="ICLR 2025 Workshop on Generative and Experimental Perspectives for Biomolecular Design"
+            descriptionEntry="lsd"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2504.09374",
+                    label: "Paper",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{
+                src: proteinaPng.src,
+                alt: "Proteina visualization",
+            }}
+            title="Proteína: Scaling Flow-based Protein Structure Generative Models"
+            authors="Tomas Geffner*, Kieran Didi*, Zuobai Zhang*, Danny Reidenbach, Zhonglin Cao, Jason Yim, Mario Geiger, Christian Dallago, Emine Kucukbenli, Arash Vahdat, Karsten Kreis"
+            venue="International Conference on Learning Representations 2025 (Oral)"
+            descriptionEntry="proteina"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2503.00710",
+                    label: "Paper",
+                },
+                {
+                    href: "https://research.nvidia.com/labs/genair/proteina/",
+                    label: "Project page",
+                },
+                {
+                    href: "https://github.com/NVIDIA-Digital-Bio/proteina/",
                     label: "Code",
                 },
             ]}
@@ -126,12 +183,34 @@ import metalPng from "@/media/metallo.jpg";
                 },
             ]}
         />
+        <PublicationEntry
+            media={{ src: smcdiffMp4, alt: "ProtDiff visualization", type: "video" }}
+            title="Diffusion probabilistic modeling of protein backbones in 3D for the motif-scaffolding problem"
+            authors="Brian L. Trippe*, Jason Yim*, Doug Tischer, David Baker, Tamara Broderick, Regina Barzilay, and Tommi Jaakkola"
+            venue="International Conference on Learning Representations 2023"
+            descriptionEntry="smcdiff"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2206.04119",
+                    label: "Paper",
+                },
+                {
+                    href: "https://www.youtube.com/watch?v=UymQ-iE23MY",
+                    label: "Talk",
+                },
+                {
+                    href: "https://github.com/blt2114/ProtDiff_SMCDiff",
+                    label: "Code",
+                },
+            ]}
+        />
     </section>
 
     <section class="pub-section">
         <h1>Science</h1>
         <PublicationEntry
-            media={{ src: rfdiffusionGif.src, alt: "RFdiffusion" }}
+            media={{ src: rfdiffusionMp4, alt: "RFdiffusion", type: "video" }}
             title="De novo design of protein structure and function with RFdiffusion"
             authors="Joseph L. Watson*, David Juergens*, Nathaniel R. Bennett*, Brian L. Trippe*, Jason Yim*, Helen E. Eisenach*, Woody Ahern*, Andrew J. Borst, Robert J. Ragotte, Lukas F. Milles, Basile I. M. Wicky, Nikita Hanikel, Samuel J. Pellock, Alexis Courbet, William Sheffler, Jue Wang, Preetham Venkatesh, Isaac Sappington, Susana Vázquez Torres, Anna Lauko, Valentin De Bortoli, Emile Mathieu, Regina Barzilay, Tommi S. Jaakkola, Frank DiMaio, Minkyung Baek, and David Baker"
             venue="Nature 2023"
@@ -157,7 +236,7 @@ import metalPng from "@/media/metallo.jpg";
             ]}
         />
         <PublicationEntry
-            media={{ src: bioemuGif.src, alt: "BioEmu" }}
+            media={{ src: bioemuMp4, alt: "BioEmu", type: "video"}}
             title="Scalable emulation of protein equilibrium ensembles with generative deep learning"
             authors="Sarah Lewis, Tim Hempel, Jose Jimenez-Luna, Michael Gastegger, Yu Xie, Andrew Y. K. Foong, Victor Garcia Satorras, Osama Abdin, Bastiaan S. Veeling, Iryna Zaporozhets, Yaoyi Chen, Soojung Yang, Arne Schneuing, Jigyasa Nigam, Federico Barbero, Vincent Stimper, Andrew Campbell, Jason Yim, Marten Lienen, Yu Shi, Shuxin Zheng, Hannes Schulz, Usman Munir, Cecilia Clementi, Frank Noe"
             venue="Science 2025"
@@ -179,7 +258,7 @@ import metalPng from "@/media/metallo.jpg";
             ]}
         />
         <PublicationEntry
-            media={{ src: rfdiffusion2Gif.src, alt: "RFdiffusion2" }}
+            media={{ src: rfdiffusion2Mp4, alt: "RFdiffusion2", type: "video" }}
             title="Atom-level enzyme active site scaffolding using RFdiffusion2"
             authors="Woody Ahern*, Jason Yim*, Doug Tischer*, Saman Salike, Seth M. Woodbury, Donghyo Kim, Indrek Kalvet, Yakov Kipnis, Brian Coventry, Han Raut Altae-Tran, Magnus S. Bauer, Regina Barzilay, Tommi S. Jaakkola, Rohith Krishna, David Baker"
             venue="Nature Methods 2025"
@@ -237,7 +316,7 @@ import metalPng from "@/media/metallo.jpg";
             ]}
         />
         <PublicationEntry
-            media={{ src: octaneGif.src, alt: "Octane visualization" }}
+            media={{ src: octaneMp4, alt: "Octane visualization", type: "video" }}
             title="Predicting conversion to wet age-related macular degeneration using deep learning"
             authors="Jason Yim*, Reena Chopra*, Terry Spitz, Jim Winkens, Annette Obika, Christopher Kelly, Harry Askham, Marko Lukic, Josef Huemer, Katrin Fasler, and  others"
             venue="Nature Medicine 2020"
