@@ -53,7 +53,7 @@ if (descriptionEntry) {
         <h3 class="pub-title">{title}</h3>
         <p class="pub-venue">{venue}</p>
         <p class="pub-authors" set:html={highlightedAuthors}></p>
-        <details class="pub-description" open>
+        <details class="pub-description">
             <summary>
                 <span class="description-title">Description</span>
                 <svg
@@ -73,6 +73,7 @@ if (descriptionEntry) {
                 </svg>
             </summary>
             <div class="description-content">
+                <div class="description-inner">
                 {
                     DescriptionContent ? (
                         <div class="prose">
@@ -82,6 +83,7 @@ if (descriptionEntry) {
                         <p>{description}</p>
                     )
                 }
+                </div>
             </div>
         </details>
         {
@@ -163,10 +165,10 @@ if (descriptionEntry) {
     }
 
     .pub-description {
-        margin: 0 0 1rem;
+        margin: 0.5rem 0 0.5rem;
         border: 1px solid var(--border);
         border-radius: 0.5rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.25rem 0.75rem;
         background-color: rgba(0, 0, 0, 0.03);
     }
 
@@ -186,16 +188,28 @@ if (descriptionEntry) {
     }
 
     .pub-description .description-content {
-        margin-top: 0.35rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
         color: var(--text-secondary);
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.25s ease;
     }
 
-    .pub-description .description-content > :first-child {
-        margin-top: 0;
+    .pub-description[open] .description-content {
+        grid-template-rows: 1fr;
     }
 
-    .pub-description .description-content > :last-child {
-        margin-bottom: 0;
+    .description-inner {
+        overflow: hidden;
+    }
+
+    .description-inner > :first-child {
+        margin-top: -1rem;
+    }
+
+    .description-inner > :last-child {
+        margin-bottom: -1rem;
     }
 
     .chevron {

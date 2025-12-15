@@ -1,0 +1,5 @@
+---
+title: 'RFdiffusion'
+---
+
+I collaborated with David Baker and his students to apply my SE(3) diffusion model to protein design. It worked spectacularly where we took a pre-trained structure prediction model and fine-tuned it with a SE(3) diffusion loss. After adding some conditioning capabilities, we tried the model, RFdiffusion, across every protein design task in David's lab and found it outperformed all prior methods. The AI-designed proteins were then synthesized in the wet lab and found to harbor the functions that we designed them for. This was the first instance of a *single* generative model successfully designing novel proteins that could bind and catalyze. The fact that a single model could solve multiple tasks and generalize beyond the training set was exciting. There has been widespread adoption by scientists with even a dedicated team to [document and improve the software](https://rosettacommons.org/2025/07/16/rfdiffusion-beta-documentation-now-available/) around RFdiffusion.

@@ -4,6 +4,14 @@ import { themeConfig } from "@/config";
 import PublicationEntry from "@/components/widgets/PublicationEntry.astro";
 import codesignGif from "@/media/codesign.gif";
 import framediffGif from "@/media/framediff.gif";
+import frameflowGif from "@/media/frameflow.gif";
+import octaneGif from "@/media/octane_s.gif";
+import ggsPng from "@/media/ggs.png";
+import afmPng from "@/media/afm.png";
+import rfdiffusionGif from "@/media/rfdiff.gif";
+import rfdiffusion2Gif from "@/media/rfdiff2.gif";
+import bioemuGif from "@/media/bioemu.gif";
+import metalPng from "@/media/metallo.jpg";
 ---
 
 <IndexLayout
@@ -69,7 +77,51 @@ import framediffGif from "@/media/framediff.gif";
                     label: "MIT News",
                 },
                 {
+                    href: "https://www.youtube.com/watch?v=IXL4WCLFeZM",
+                    label: "Talk",
+                },
+                {
                     href: "https://github.com/jasonkyuyim/se3_diffusion",
+                    label: "Code",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: frameflowGif.src, alt: "Frame-flow visualization" }}
+            title="Improved motif-scaffolding with SE (3) flow matching"
+            authors="Jason Yim, Andrew Campbell, Emile Mathieu, Andrew YK Foong, Michael Gastegger, José Jiménez-Luna, Sarah Lewis, Victor Garcia Satorras, Bastiaan S Veeling, Frank Noé, and  others"
+            venue="Transactions on Machine Learning Research 2024"
+            descriptionEntry="frameflow"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2310.05297",
+                    label: "Paper",
+                },
+                {
+                    href: "https://github.com/microsoft/protein-frame-flow",
+                    label: "Code",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: ggsPng.src, alt: "GGS visualization" }}
+            title="Improving protein optimization with smoothed fitness landscapes"
+            authors="Andrew Kirjner*, Jason Yim*, Raman Samusevich, Shahar Bracha, Tommi Jaakkola, Regina Barzilay, and Ila Fiete"
+            venue="International Conference on Learning Representations 2024"
+            descriptionEntry="ggs"
+            description=""
+            links={[
+                {
+                    href: "https://arxiv.org/abs/2307.00494",
+                    label: "Paper",
+                },
+                {
+                    href: "https://news.mit.edu/2024/new-computational-technique-could-help-engineer-useful-proteins-0403",
+                    label: "MIT News",
+                },
+                {
+                    href: "https://github.com/kirjner/GGS",
                     label: "Code",
                 },
             ]}
@@ -78,8 +130,136 @@ import framediffGif from "@/media/framediff.gif";
 
     <section class="pub-section">
         <h1>Science</h1>
-        <p class="pub-placeholder">More details coming soon.</p>
+        <PublicationEntry
+            media={{ src: rfdiffusionGif.src, alt: "RFdiffusion" }}
+            title="De novo design of protein structure and function with RFdiffusion"
+            authors="Joseph L. Watson*, David Juergens*, Nathaniel R. Bennett*, Brian L. Trippe*, Jason Yim*, Helen E. Eisenach*, Woody Ahern*, Andrew J. Borst, Robert J. Ragotte, Lukas F. Milles, Basile I. M. Wicky, Nikita Hanikel, Samuel J. Pellock, Alexis Courbet, William Sheffler, Jue Wang, Preetham Venkatesh, Isaac Sappington, Susana Vázquez Torres, Anna Lauko, Valentin De Bortoli, Emile Mathieu, Regina Barzilay, Tommi S. Jaakkola, Frank DiMaio, Minkyung Baek, and David Baker"
+            venue="Nature 2023"
+            descriptionEntry="rfdiffusion"
+            description=""
+            links={[
+                {
+                    href: "https://www.nature.com/articles/s41586-023-06415-8",
+                    label: "Paper",
+                },
+                {
+                    href: "https://github.com/deepmind/rfdiffusion",
+                    label: "Code",
+                },
+                {
+                    href: "https://www.nytimes.com/2023/01/09/science/artificial-intelligence-proteins.html",
+                    label: "NY Times Article",
+                },
+                {
+                    href: "https://www.economist.com/science-and-technology/2025/07/02/ai-is-helping-to-design-proteins-from-scratch",
+                    label: "Economist Article",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: bioemuGif.src, alt: "BioEmu" }}
+            title="Scalable emulation of protein equilibrium ensembles with generative deep learning"
+            authors="Sarah Lewis, Tim Hempel, Jose Jimenez-Luna, Michael Gastegger, Yu Xie, Andrew Y. K. Foong, Victor Garcia Satorras, Osama Abdin, Bastiaan S. Veeling, Iryna Zaporozhets, Yaoyi Chen, Soojung Yang, Arne Schneuing, Jigyasa Nigam, Federico Barbero, Vincent Stimper, Andrew Campbell, Jason Yim, Marten Lienen, Yu Shi, Shuxin Zheng, Hannes Schulz, Usman Munir, Cecilia Clementi, Frank Noe"
+            venue="Science 2025"
+            descriptionEntry="bioemu"
+            description=""
+            links={[
+                {
+                    href: "https://www.science.org/doi/10.1126/science.adv9817",
+                    label: "Paper",
+                },
+                {
+                    href: "https://www.science.org/doi/10.1126/science.adv9817",
+                    label: "Code",
+                },
+                {
+                    href: "https://www.microsoft.com/en-us/research/blog/exploring-the-structural-changes-driving-protein-function-with-bioemu-1/",
+                    label: "Microsoft Research Blog",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: rfdiffusion2Gif.src, alt: "RFdiffusion2" }}
+            title="Atom-level enzyme active site scaffolding using RFdiffusion2"
+            authors="Woody Ahern*, Jason Yim*, Doug Tischer*, Saman Salike, Seth M. Woodbury, Donghyo Kim, Indrek Kalvet, Yakov Kipnis, Brian Coventry, Han Raut Altae-Tran, Magnus S. Bauer, Regina Barzilay, Tommi S. Jaakkola, Rohith Krishna, David Baker"
+            venue="Nature Methods 2025"
+            descriptionEntry="rfdiffusion2"
+            description=""
+            links={[
+                {
+                    href: "https://www.nature.com/articles/s41592-025-02975-x",
+                    label: "Paper",
+                },
+                {
+                    href: "https://github.com/RosettaCommons/RFdiffusion2",
+                    label: "Code",
+                },
+                {
+                    href: "https://www.ipd.uw.edu/2025/04/introducing-rfdiffusion2/",
+                    label: "Institute for Protein Design Blog",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: metalPng.src, alt: "Metallohydrolase" }}
+            title="Computational design of metallohydrolases"
+            authors="Donghyo Kim, Seth M. Woodbury, Woody Ahern, Doug Tischer, Nikita Hanikel, Saman Salike, Jason Yim, Samuel J. Pellock, Anna Lauko, Indrek Kalvet, Donald Hilvert, David Baker"
+            venue="Nature 2025"
+            descriptionEntry="metallo"
+            description=""
+            links={[
+                {
+                    href: "https://www.nature.com/articles/s41586-025-09746-w",
+                    label: "Paper",
+                },
+                {
+                    href: "https://www.ipd.uw.edu/2025/12/rfdiffusion2-efficient-enzymes-from-prompts/",
+                    label: "Institute for Protein Design Blog",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: afmPng.src, alt: "AlphaFold-multimer visualization" }}
+            title="Protein complex prediction with AlphaFold-Multimer"
+            authors="Richard Evans, Michael O’Neill, Alexander Pritzel, Natasha Antropova, Andrew Senior, Tim Green, Augustin Žı́dek, Russ Bates, Sam Blackwell, Jason Yim, Olaf Ronneberger, Sebastian Bodenstein, Michal Zielinski, Alex Bridgland, Anna Potapenko, Andrew Cowie, Kathryn Tunyasuvunakool, Rishub Jain, Ellen Clancy, Pushmeet Kohli, John Jumper, and Demis Hassabis"
+            venue="bioRxiv 2022"
+            descriptionEntry="alphafold_multimer"
+            description=""
+            links={[
+                {
+                    href: "https://www.biorxiv.org/content/10.1101/2021.10.04.463034v2",
+                    label: "Paper",
+                },
+                {
+                    href: "https://github.com/deepmind/alphafold",
+                    label: "Code",
+                },
+            ]}
+        />
+        <PublicationEntry
+            media={{ src: octaneGif.src, alt: "Octane visualization" }}
+            title="Predicting conversion to wet age-related macular degeneration using deep learning"
+            authors="Jason Yim*, Reena Chopra*, Terry Spitz, Jim Winkens, Annette Obika, Christopher Kelly, Harry Askham, Marko Lukic, Josef Huemer, Katrin Fasler, and  others"
+            venue="Nature Medicine 2020"
+            descriptionEntry="octane_s"
+            description=""
+            links={[
+                {
+                    href: "https://www.nature.com/articles/s41591-020-0867-7",
+                    label: "Paper",
+                },
+                {
+                    href: "https://github.com/google-health/imaging-research",
+                    label: "Code",
+                },
+                {
+                    href: "https://deepmind.google/blog/using-ai-to-predict-retinal-disease-progression/",
+                    label: "DeepMind Blog",
+                }
+            ]}
+        />
     </section>
+    
 </IndexLayout>
 
 <style>
